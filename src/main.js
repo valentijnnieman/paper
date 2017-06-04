@@ -1,29 +1,24 @@
 // Paper prototype
 // ui rendering library using functional javascript paradigms
 
-// define a component
-var testComponent = function(){
-  var component = {}
-  component.click = function() {
-    console.log('ha')
+function renderInto(rootID, component) {
+  var element = new component()
+  for(var i = 0; i < element.render().length; i++) {
+    document.getElementById(rootID).appendChild(element.render()[i])
   }
-  component.list = function() {
-    var htmlstring = ""
-    for(var i = 0; i < 10; i++) {
-      htmlstring += '<li onclick="click">well</li>'
-    }
-    return htmlstring
-  }
-  component.render = function() {
-    return component.list()
-  }
-  return component
 }
 
-function renderInto(rootID, component) {
-  var node = document.createElement('div')
-  window.funfunc = component().click
-  node.innerHTML = '<li onclick="component().click()">ha</li>' 
-  document.getElementById(rootID).appendChild(node)
+function createNode(element, inner, onClick) {
+  var node = document.createElement(element)
+  node.innerHTML = inner
+  if(onClick) {
+    node.onclick = onClick
+  }
+  return node
 }
-renderInto('root', testComponent)
+
+function bindMethods(component, methods) {
+  var element = new component()
+  var renderedComponent = element.render()
+  console.log(renderedComponent)
+}
