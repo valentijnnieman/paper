@@ -1,24 +1,37 @@
 // Paper prototype
 // ui rendering library using functional javascript paradigms
 
-function renderInto(rootID, component) {
-  var element = new component()
-  for(var i = 0; i < element.render().length; i++) {
-    document.getElementById(rootID).appendChild(element.render()[i])
+function _map(array, method) {
+  var newArray = []
+  for(var i = 0; i < array.length; i++) {
+    newArray[i] = method(array[i])
   }
+  return newArray
 }
 
-function createNode(element, inner, onClick) {
-  var node = document.createElement(element)
-  node.innerHTML = inner
+function renderInto(rootID, component) {
+  var element = new component()
+  element.render().map(function(element){
+    return createNode(element)
+  }).map(function(node) {
+    document.getElementById(rootID).appendChild(node)
+  })
+}
+
+function createNode(htmlString, onClick) {
+  var node = document.createElement('template')
+  node.innerHTML = htmlString
   if(onClick) {
     node.onclick = onClick
   }
-  return node
+  return node.content
 }
 
 function bindMethods(component, methods) {
   var element = new component()
   var renderedComponent = element.render()
-  console.log(renderedComponent)
+}
+
+module.exports = {
+  renderInto: renderInto
 }

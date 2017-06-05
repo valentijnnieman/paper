@@ -1,0 +1,27 @@
+{
+  "name": "paper",
+  "version": "0.0.1",
+  "description": "a lightweight ui library using functional javascript paradigms",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valentijnnieman/paper.git"
+  },
+  "keywords": [
+    "lightweight",
+    "ui",
+    "functional"
+  ],
+  "author": "Valentijn Nieman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/valentijnnieman/paper/issues"
+  },
+  "homepage": "https://github.com/valentijnnieman/paper#readme",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  }
+}

@@ -6,9 +6,15 @@ function testComponent(){
   this.list = function() {
     var elements = []
     for(var i = 0; i < 10; i++) {
-      elements.push(createNode("li", "well", this.click))
+      elements.push("<li>well</li>")
     }
     return elements 
+  }
+  this.test = function() {
+    return [
+      "<div class='block'>welcome to</div>",
+      "<h1>paper.js</h1>",
+    ]
   }
   this.render = function() {
     return this.list()
