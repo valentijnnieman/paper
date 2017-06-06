@@ -9,13 +9,23 @@ function _map(array, method) {
   return newArray
 }
 
-function renderInto(rootID, component) {
+function createVirtualNode(id) {
+  return document.getElementById(id).cloneNode()
+}
+
+function renderInto(virtualNode, component) {
   var element = new component()
+  console.log(virtualNode)
   element.render().map(function(element){
     return createNode(element)
   }).map(function(node) {
-    document.getElementById(rootID).appendChild(node)
+    virtualNode.appendChild(node)
   })
+  return virtualNode
+}
+
+function updateDom(virtualNode) {
+  document.getElementById(virtualNode.id).replaceWith(virtualNode)
 }
 
 function createNode(htmlString, onClick) {

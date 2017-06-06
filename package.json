@@ -4,7 +4,9 @@
   "description": "a lightweight ui library using functional javascript paradigms",
   "main": "main.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "homepage": "https://github.com/valentijnnieman/paper#readme",
   "devDependencies": {
+    "webpack": "^2.2.1",
     "jest": "^20.0.4"
   }
 }

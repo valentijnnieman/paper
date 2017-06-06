@@ -1,4 +1,5 @@
 // define a component
+//
 function testComponent(){
   this.click = function() {
     console.log('ha')
@@ -21,5 +22,6 @@ function testComponent(){
   }
 }
 
-bindMethods(testComponent, [])
-renderInto('root', testComponent)
+var shadow = createVirtualNode('root')
+shadow = renderInto(shadow, testComponent)
+updateDom(shadow)
